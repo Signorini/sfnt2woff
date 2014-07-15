@@ -1,3 +1,5 @@
+prefix=/usr/local
+
 all: sfnt2woff woff2sfnt
 
 sfnt2woff: sfnt2woff.o woff.o woff.h Makefile
@@ -15,3 +17,6 @@ woff.o: woff.c woff.h woff-private.h Makefile
 clean:
 	$(RM) -r *.o *.dSYM
 
+install:
+	install -m 0755 sfnt2woff $(prefix)/bin
+	install -m 0755 woff2sfnt $(prefix)/bin
